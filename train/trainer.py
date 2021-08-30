@@ -298,7 +298,6 @@ class Trainer(object):
                 plt.tight_layout()
                 print(str(i).zfill(5))
                 plt.savefig(os.path.join(str(save_dir_img), str(i).zfill(5) + '.png'))
-                    #save_dir_img + "/" + str(i) + '.png')
                 plt.clf()
                 plt.close()
 
