@@ -88,7 +88,7 @@ class Trainer(object):
     def load_weights(self, model, saved_step, save_dir_model):
         if saved_step == 0:
             print("initializing models ...")
-            return model.apply(self.weights_init())
+            return model.apply(self.weights_init)
         else:
             print("loading models ... ", saved_step)
             return model.load_state_dict(
