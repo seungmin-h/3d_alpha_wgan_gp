@@ -74,9 +74,10 @@ class EDModel(nn.Module):
 
 class CodeDiscriminator(nn.Module):
 
-    def __init__(self, latent=1000):
+    def __init__(self, b_size, latent=1000):
         super(CodeDiscriminator, self).__init__()
         ndf = 4096
+        self.b_size = b_size
         self.latent = latent
         self.main = nn.Sequential(
             # layer1
@@ -92,7 +93,7 @@ class CodeDiscriminator(nn.Module):
         )
 
     def forward(self, input):
-        input = input.view(b_size, self.latent)
+        input = input.view(self.b_size, self.latent)
         return self.main(input)
 
 class Interpolate(nn.Module):

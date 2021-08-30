@@ -37,11 +37,11 @@ class Trainer(object):
         print("Running on:", device)
         return device
 
-    def _get_model(self, latent):
+    def _get_model(self, latent, b_size):
         e = EDModel(out_num=latent)
         g = Generator()
         d = EDModel(out_num=1)
-        cd = CodeDiscriminator()
+        cd = CodeDiscriminator(b_size)
         return e, g, d, cd
 
     def gradient_penalty(self, model, x, x_fake, w=10):
@@ -132,8 +132,9 @@ class Trainer(object):
         save_period = self.config['train']['save_period']
 
         cube_len = self.config['plot']['cube_len']
+        b_size = self.config['dataset']['batch_size']
 
-        E, G, D, CD = self._get_model(latent_dim)
+        E, G, D, CD = self._get_model(latent_dim, b_size=b_size)
         E.to(self.device).train()
         G.to(self.device).train()
         D.to(self.device).train()
