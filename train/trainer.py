@@ -296,7 +296,7 @@ class Trainer(object):
                         plt.imshow(voxel, cmap="gray", origin='lower')
 
                 plt.tight_layout()
-                plt.savefig(os.path.join(save_dir_img, str(i).zfill(5) + '.png'))
+                plt.savefig(save_dir_img + "/" + str(i).zfill(5) + '.png')
                 plt.clf()
                 plt.close()
 
