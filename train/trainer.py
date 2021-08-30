@@ -65,13 +65,13 @@ class Trainer(object):
         penalty = w * bi_penalty(eps_norm(grad_x_hat)).mean()
         return penalty
 
-    def freeze_params(*args):
+    def freeze_params(self, *args):
         for module in args:
             if module:
                 for p in module.parameters():
                     p.requires_grad = False
 
-    def unfreeze_params(*args):
+    def unfreeze_params(self, *args):
         for module in args:
             if module:
                 for p in module.parameters():
