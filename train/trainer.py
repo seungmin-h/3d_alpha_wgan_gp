@@ -147,10 +147,10 @@ class Trainer(object):
         optimizer_D = optim.Adam(D.parameters(), lr=lr, betas=betas)
         optimizer_CD = optim.Adam(CD.parameters(), lr=lr, betas=betas)
 
-        self.load_weights(E, saved_step=saved_step, save_dir_model)
-        self.load_weights(G, saved_step=saved_step, save_dir_model)
-        self.load_weights(D, saved_step=saved_step, save_dir_model)
-        self.load_weights(CD, saved_step=saved_step, save_dir_model)
+        self.load_weights(E, saved_step, save_dir_model)
+        self.load_weights(G, saved_step, save_dir_model)
+        self.load_weights(D, saved_step, save_dir_model)
+        self.load_weights(CD, saved_step, save_dir_model)
 
         data_iter = self.inf_train_gen(train_loader)
         start = time.time()
