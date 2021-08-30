@@ -3,7 +3,7 @@ train:
   beta_1: 0.5
   beta_2: 0.999
   save_dir_img: "./result/saved_img"
-  save_dir_model: "./result/weights/saved_model"
+  save_dir_model: "./result/saved_model"
   log_period: 500   # 학습 로그 출력 주기
   save_period: 2000   # 모델 가중치 저장 주기
   lambda_1: 10  # gradient penalty 중요도
