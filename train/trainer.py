@@ -85,20 +85,20 @@ class Trainer(object):
             nn.init.normal_(m.weight.data, 1.0, 0.02)
             nn.init.constant_(m.bias.data, 0)
 
-    def load_weights(self, model, saved_step, save_dir_model):
+    def load_weights(self, model, m_name, saved_step, save_dir_model):
         if saved_step == 0:
-            print("initializing model {}...".format(str(model)))
+            print("initializing model {}...".format(m_name))
             return model.apply(self.weights_init)
         else:
-            print("loading model {0} / step {1}... ".format(str(model), int(saved_step)))
+            print("loading model {0} / step {1}... ".format(m_name, int(saved_step)))
             return model.load_state_dict(
-                torch.load(os.path.join(save_dir_model, str(saved_step).zfill(5) + "_" + str(model) + ".pth")))
+                torch.load(os.path.join(save_dir_model, str(saved_step).zfill(5) + "_" + m_name + ".pth")))
 
-    def save_weights(self, model, range_i, save_period, save_dir_model):
+    def save_weights(self, model, m_name, range_i, save_period, save_dir_model):
         if range_i % save_period == 0:
             print("saving models ... ", str(range_i).zfill(5))
-            torch.save(model.state_dict(),
-                       os.path.join(save_dir_model, str(range_i).zfill(5) + "_" + str(model) + ".pth"))
+            return torch.save(model.state_dict(),
+                              os.path.join(save_dir_model, str(range_i).zfill(5) + "_" + m_name + ".pth"))
 
     def inf_train_gen(self, data_loader):
 
@@ -303,10 +303,10 @@ class Trainer(object):
                 plt.close()
 
             # 모델 저장
-            self.save_weights(E, i, save_period, save_dir_model)
-            self.save_weights(G, i, save_period, save_dir_model)
-            self.save_weights(D, i, save_period, save_dir_model)
-            self.save_weights(CD, i, save_period, save_dir_model)
+            self.save_weights(E, "E", i, save_period, save_dir_model)
+            self.save_weights(G, "G", i, save_period, save_dir_model)
+            self.save_weights(D, "D", i, save_period, save_dir_model)
+            self.save_weights(CD, "CD", i, save_period, save_dir_model)
 
         elapsed_time = time.time() - start
         print("elapsed_time:{0}".format(elapsed_time / 3600) + "[h]")
