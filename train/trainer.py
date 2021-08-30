@@ -87,10 +87,10 @@ class Trainer(object):
 
     def load_weights(self, model, saved_step, save_dir_model):
         if saved_step == 0:
-            print("initializing models ...")
+            print("initializing model {}...".format(str(model)))
             return model.apply(self.weights_init)
         else:
-            print("loading models ... ", saved_step)
+            print("loading model {0} / step {1}... ".format(str(model), int(saved_step)))
             return model.load_state_dict(
                 torch.load(os.path.join(save_dir_model, str(saved_step).zfill(5) + "_" + str(model) + ".pth")))
 
