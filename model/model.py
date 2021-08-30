@@ -77,7 +77,7 @@ class CodeDiscriminator(nn.Module):
     def __init__(self, latent=1000):
         super(CodeDiscriminator, self).__init__()
         ndf = 4096
-        self.latent = latent_dim
+        self.latent = latent
         self.main = nn.Sequential(
             # layer1
             nn.Linear(self.latent, ndf),
