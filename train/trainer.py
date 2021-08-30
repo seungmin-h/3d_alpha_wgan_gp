@@ -108,14 +108,15 @@ class Trainer(object):
 
     def train(self):
         train_loader = self.dataset._get_data_loader()
+        _make_dir(self.config['train']['save_dir_img'])
+        _make_dir(self.config['train']['save_dir_model'])
 
         # Hyperparameters
         lr = self.config['train']['learning_rate']
         betas = (self.config['train']['beta_1'], self.config['train']['beta_2'])
 
-        save_dir_img = _make_dir(self.config['train']['save_dir_img'])
-        print(save_dir_img)
-        save_dir_model = _make_dir(self.config['train']['save_dir_model'])
+        save_dir_img = self.config['train']['save_dir_img']
+        save_dir_model = self.config['train']['save_dir_model']
 
         saved_step = self.config['train']['saved_step']
         max_step = self.config['train']['max_step']
