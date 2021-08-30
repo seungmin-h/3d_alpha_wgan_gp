@@ -11,7 +11,6 @@ import numpy as np
 import nibabel as nib
 
 import torch
-import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
 

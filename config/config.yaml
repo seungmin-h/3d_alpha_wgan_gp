@@ -17,7 +17,7 @@ train:
 dataset:
   batch_size: 4
   num_workers: 4
-  train_path: "../../data/ixi_dataset/*.nii.gz"
+  data_path: "../../data/ixi_dataset/*.nii.gz"
 
 model:
   latant_dim: 1000
