@@ -37,9 +37,8 @@ class Trainer(object):
         print("Running on:", device)
         return device
 
-    def _get_model(self):
-        latent_dim = self.config['model']['latent_dim']
-        e = EDModel(out_num=latent_dim)
+    def _get_model(self, latent):
+        e = EDModel(out_num=latent)
         g = Generator()
         d = EDModel(out_num=1)
         cd = CodeDiscriminator()
@@ -124,7 +123,7 @@ class Trainer(object):
         iter_d = self.config['train']['iter_d']
         iter_cd = self.config['train']['iter_cd']
 
-        latent_dim = self.config['train']['latent_dim']
+        latent_dim = self.config['model']['latent_dim']
 
         lambda_1 = self.config['train']['lambda_1']
         lambda_2 = self.config['train']['lambda_2']
@@ -134,7 +133,7 @@ class Trainer(object):
 
         cube_len = self.config['plot']['cube_len']
 
-        E, G, D, CD = self._get_model()
+        E, G, D, CD = self._get_model(latent_dim)
         E.to(self.device).train()
         G.to(self.device).train()
         D.to(self.device).train()

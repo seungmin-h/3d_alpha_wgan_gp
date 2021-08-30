@@ -1,5 +1,4 @@
 train:
-  latant_dim: 1000
   learning_rate: 0.0002
   beta_1: 0.5
   beta_2: 0.999
@@ -19,6 +18,9 @@ dataset:
   batch_size: 4
   num_workers: 4
   data_path: "../../data/ixi_dataset/*.nii.gz"
+
+model:
+  latant_dim: 1000
 
 plot:
   cube_len: 64
