@@ -124,7 +124,7 @@ class Trainer(object):
         iter_d = self.config['train']['iter_d']
         iter_cd = self.config['train']['iter_cd']
 
-        latent_dim = self.config['model']['latent_dim']
+        latent_dim = self.config['train']['latent_dim']
 
         lambda_1 = self.config['train']['lambda_1']
         lambda_2 = self.config['train']['lambda_2']
