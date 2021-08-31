@@ -40,7 +40,7 @@ class IXIDataset(Dataset):
 class Centering(object):
 
     def __init__(self):
-        self.max_len = 512 #256
+        self.max_len = 256
 
     def __call__(self, img):
         min_len = img.shape[-1]
