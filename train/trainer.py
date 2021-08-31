@@ -148,8 +148,8 @@ class Trainer(object):
         cube_len = self.config['plot']['cube_len']
         b_size = self.config['dataset']['batch_size']
 
-        #E, G, D, CD = self._get_model(latent_dim, b_size=b_size)
-        E, G, D, CD = self._get_model_multi_gpu(latent_dim, b_size=b_size)
+        E, G, D, CD = self._get_model(latent_dim, b_size=b_size)
+        #E, G, D, CD = self._get_model_multi_gpu(latent_dim, b_size=b_size)
         E.to(self.device).train()
         G.to(self.device).train()
         D.to(self.device).train()

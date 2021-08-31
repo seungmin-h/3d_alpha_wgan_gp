@@ -11,9 +11,9 @@ class Generator(nn.Module):
 
     def __init__(self, latent=1000):
         super(Generator, self).__init__()
-        ngf = 64*2
+        ngf = 64#*2
         self.latent = latent
-        self.interpolate = Interpolate(scale=4, mode='nearest')
+        self.interpolate = Interpolate(scale=2, mode='nearest')
         self.main = nn.Sequential(
             # layer1
             nn.ConvTranspose3d(self.latent, ngf * 8, 4, 1, 0),
@@ -48,7 +48,7 @@ class EDModel(nn.Module):
 
     def __init__(self, out_num=1):
         super(EDModel, self).__init__()
-        ndf = 64*2
+        ndf = 64#*2
         self.main = nn.Sequential(
             # layer1
             nn.Conv3d(1, ndf * 1, 4, 2, 1),
@@ -76,7 +76,7 @@ class CodeDiscriminator(nn.Module):
 
     def __init__(self, b_size, latent=1000):
         super(CodeDiscriminator, self).__init__()
-        ndf = 128*64 #4096
+        ndf = 4096 #128*64
         self.b_size = b_size
         self.latent = latent
         self.main = nn.Sequential(
