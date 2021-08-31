@@ -9,7 +9,7 @@ import torch.nn as nn
 
 class Generator(nn.Module):
 
-    def __init__(self, latent=1000):
+    def __init__(self, latent=1000*27):
         super(Generator, self).__init__()
         ngf = 64
         self.latent = latent
@@ -74,7 +74,7 @@ class EDModel(nn.Module):
 
 class CodeDiscriminator(nn.Module):
 
-    def __init__(self, b_size, latent=1000):
+    def __init__(self, b_size, latent=1000*27):
         super(CodeDiscriminator, self).__init__()
         ndf = 4096
         self.b_size = b_size
