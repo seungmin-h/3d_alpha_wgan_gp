@@ -79,7 +79,7 @@ class DatasetWrapper(object):
         self.path = data_path
 
     def _get_transform(self):
-        return transforms.Compose([#Centering(),
+        return transforms.Compose([Centering(),
                                    Normalize(),
                                    ToTensor()])
 
