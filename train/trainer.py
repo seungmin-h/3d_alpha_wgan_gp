@@ -44,6 +44,18 @@ class Trainer(object):
         cd = CodeDiscriminator(b_size)
         return e, g, d, cd
 
+    def _get_model_multi_gpu(self, latent, b_size):
+        e = EDModel(out_num=latent)
+        e = nn.DataParallel(e, device_ids=[0, 1])
+        g = Generator()
+        g = nn.DataParallel(g, device_ids=[0, 1])
+        d = EDModel(out_num=1)
+        d = nn.DataParallel(d, device_ids=[0, 1])
+        cd = CodeDiscriminator(b_size)
+        cd = nn.DataParallel(cd, device_ids=[0, 1])
+        return e, g, d, cd
+
+
     def gradient_penalty(self, model, x, x_fake, w=10):
         alpha_size = tuple((len(x), *(1, ) * (x.dim() - 1)))
         alpha_t = torch.Tensor
@@ -136,7 +148,8 @@ class Trainer(object):
         cube_len = self.config['plot']['cube_len']
         b_size = self.config['dataset']['batch_size']
 
-        E, G, D, CD = self._get_model(latent_dim, b_size=b_size)
+        #E, G, D, CD = self._get_model(latent_dim, b_size=b_size)
+        E, G, D, CD = self._get_model_multi_gpu(latent_dim, b_size=b_size)
         E.to(self.device).train()
         G.to(self.device).train()
         D.to(self.device).train()
