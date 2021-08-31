@@ -13,7 +13,7 @@ class Generator(nn.Module):
         super(Generator, self).__init__()
         ngf = 64*2
         self.latent = latent
-        self.interpolate = Interpolate(scale=1, mode='nearest')
+        self.interpolate = Interpolate(scale=4, mode='nearest')
         self.main = nn.Sequential(
             # layer1
             nn.ConvTranspose3d(self.latent, ngf * 8, 4, 1, 0),
