@@ -9,7 +9,7 @@ train:
   lambda_1: 10  # gradient penalty 중요도
   lambda_2: 10  # 재구성 오차 중요도
   saved_step: 0   # 학습 재개 스텝수
-  max_step: 8000  # 최대 학습 스텝수
+  max_step: 16000  # 최대 학습 스텝수
   iter_g: 2   # 1 iter 내 각 모델의 갱신 횟수
   iter_d: 1
   iter_cd: 1
