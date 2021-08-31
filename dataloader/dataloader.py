@@ -16,7 +16,7 @@ from torchvision import transforms
 
 from skimage.transform import resize
 
-cube_len = 64
+cube_len = 128 #64
 
 class IXIDataset(Dataset):
     def __init__(self, img_paths, transform=None):
@@ -40,7 +40,7 @@ class IXIDataset(Dataset):
 class Centering(object):
 
     def __init__(self):
-        self.max_len = 256
+        self.max_len = 512 #256
 
     def __call__(self, img):
         min_len = img.shape[-1]
