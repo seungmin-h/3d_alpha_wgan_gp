@@ -16,7 +16,7 @@ from torchvision import transforms
 
 from skimage.transform import resize
 
-cube_len = 128 #64
+cube_len = 64#128
 
 class IXIDataset(Dataset):
     def __init__(self, img_paths, transform=None):
